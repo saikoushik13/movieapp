@@ -21,23 +21,23 @@ public class MovieController {
     public List<Movie> getAllMovies() {
         return movieService.getAllMovies();
     }
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public Optional<Movie> getMovieById(@PathVariable Long id) {
         return movieService.getMovieById(id);
     }
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public Movie addMovie(@RequestBody Movie movie) {
         return movieService.addMovie(movie);
     }
-    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public Movie updateMovie(@PathVariable Long id, @RequestBody Movie movieDetails) {
         return movieService.updateMovie(id, movieDetails);
     }
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteMovie(@PathVariable Long id) {
         movieService.deleteMovie(id);
     }
